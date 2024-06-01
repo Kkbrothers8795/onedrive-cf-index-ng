@@ -1,0 +1,16 @@
+# action.yml
+name: 'Onedrive'
+description: 'Greet someone and record the time'
+inputs:
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ["npx", "wrangler", "pages", "dev", ".vercel/output/static", "--ip=0.0.0.0", "--compatibility-flag=nodejs_compat", "--compatibility-date=2023-10-10", "--kv=ONEDRIVE_CF_INDEX_KV"]
